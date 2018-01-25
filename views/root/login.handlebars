@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="col-md-6 mx-auto">
+    <div class="card card-body">
+      <img src="/images/logo.svg" class="logo mx-auto">
+      <h3 class="text-center mt-3">登录</h3>
+      <form action="/login" method="post">
+        <div class="form-group">
+          <label for="username">用户名</label>
+          <input id="username" type="text" name="username" class="form-control" required placeholder="请输入用户名/邮箱" {{#if body.username}}value="{{body.username}}"{{/if}}>
+        </div>
+        <div class="form-group">
+          <label for="password">密码</label>
+          <input id="password" type="password" name="password" class="form-control" required placeholder="请输入密码" {{#if body.password}}value="{{body.password}}"{{/if}}>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block mt-5">登录</button>
+      </form>
+    </div>
+  </div>
+</div>

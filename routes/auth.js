@@ -13,7 +13,8 @@ router.get(
   passport.authenticate('github', { failureRedirect: '/' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/dashbord');
+    req.flash('success', '登录成功！');
+    res.redirect('/dashboard');
   }
 );
 
@@ -23,11 +24,6 @@ router.get('/verify', (req, res) => {
   } else {
     res.send('not auth');
   }
-});
-
-router.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect('/');
 });
 
 module.exports = router;

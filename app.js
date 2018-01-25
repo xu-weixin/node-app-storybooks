@@ -38,8 +38,6 @@ app.use(express.static(path.join(__dirname + '/public')));
 // body-parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-// apply flash message
-app.use(flash());
 
 app.use(cookieParser());
 app.use(
@@ -54,11 +52,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// apply flash message
+app.use(flash());
+
 // global variables
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
   res.locals.success_msg = req.flash('success_msg');
   res.locals.error_msg = req.flash('error_msg');
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
   next();
 });
 
